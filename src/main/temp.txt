@@ -1,0 +1,50 @@
+{
+  "per_page": 1,
+  "items": [
+    {
+      "salary": {
+        "to": null,
+        "from": 30000,
+        "currency": "RUR"
+      },
+      "name": "Секретарь",
+      "area": {
+        "url": "https://api.hh.ru/areas/1",
+        "url": "1",
+        "name": "Москва"
+      },
+      "url": "https://api.hh.ru/vacancies/8331228",
+      "published_at": "2013-07-08T16:17:21+0400",
+      "relations": [ ],
+      "employer": {
+        "logo_urls": {
+          "90": "http://hh.ru/employer-logo/289027.png",
+          "240": "http://hh.ru/employer-logo/289169.png",
+          "original": "http://hh.ru/file/2352807.png"
+        },
+        "name": "HeadHunter",
+        "url": "https://api.hh.ru/employers/1455",
+        "alternate_url": "http://hh.ru/employer/1455",
+        "url": "1455",
+        "trusted": true
+      },
+      "response_letter_required": true,
+      "address": null,
+      "alternate_url": "http://hh.ru/vacancy/8331228",
+      "apply_alternate_url": "http://hh.ru/applicant/vacancy_response?vacancyId=8331228",
+      "type": {
+        "url": "open",
+        "name": "Открытая"
+      },
+      "url": "8331228",
+      "snippet": {
+          "requirement": "Высшее образование. Опыт работы в качестве <highlighttext>секретаря</highlighttext>, офис-менеджера. Знание делопроизводства, документооборота. Коммуникативные навыки.",
+          "responsibility": "Документооборот (регистрация, отправка, контроль исполнения писем, ведение протоколов, отчетность). Распределение корреспонденции. Прием и распределение телефонных звонков."
+      },
+    }
+  ],
+  "page": 0,
+  "pages": 13,
+  "found": 13,
+  "clusters": null
+}
