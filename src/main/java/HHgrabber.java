@@ -16,7 +16,7 @@ import java.util.List;
 
 public class HHgrabber {
     private static final String URL_HH="https://api.hh.ru/vacancies?area=1202&specialization=1";
-    private static final String COUNT_VACANCIES_ON_PAGE ="per_page=500";
+    private static final String COUNT_VACANCIES_ON_PAGE ="per_page=100";
     private static List<Vacancy> vacancies;
 
     public static List<Vacancy> getVacancies() {
@@ -52,25 +52,28 @@ public class HHgrabber {
         List<Vacancy> result=new ArrayList<Vacancy>();
         JSONParser jsonParser=new JSONParser();
         JSONArray jsonArray=(JSONArray) ((JSONObject) jsonParser.parse(responseSite)).get("items");
-        for (int i=0;i<jsonArray.size();i++){
-            Vacancy vacancy=new Vacancy();
-            JSONObject tmp=(JSONObject) jsonArray.get(i);
+        System.out.println(jsonArray);
+        for (Object o : jsonArray) {
+            Vacancy vacancy = new Vacancy();
+            JSONObject tmp = (JSONObject) o;
             vacancy.setName((String) tmp.get("name"));
             vacancy.setDateOfPublication((String) tmp.get("published_at"));
             vacancy.setUrl((String) tmp.get("alternate_url"));
-            if (tmp.get("salary") != null){
-                StringBuilder stringBuilder=new StringBuilder();
-                JSONObject salary= (JSONObject) jsonParser.parse(((JSONObject) tmp.get("salary")).toJSONString());
-                Object to=salary.get("to");
-                Object from=salary.get("from");
-                if (to != null){
-                    stringBuilder.append("to "+to.toString()+" ");}
-                if (from != null){
-                    stringBuilder.append("from "+from.toString());}
-                vacancy.setSalary( stringBuilder.toString());
+            if (tmp.get("salary") != null) {
+                StringBuilder stringBuilder = new StringBuilder();
+                JSONObject salary = (JSONObject) jsonParser.parse(((JSONObject) tmp.get("salary")).toJSONString());
+                Object to = salary.get("to");
+                Object from = salary.get("from");
+                if (to != null) {
+                    stringBuilder.append("to ").append(to.toString()).append(" ");
+                }
+                if (from != null) {
+                    stringBuilder.append("from ").append(from.toString());
+                }
+                vacancy.setSalary(stringBuilder.toString());
             }
-            JSONObject employer=(JSONObject) tmp.get("employer");
-            vacancy.setOrganization(  employer.get("name").toString());
+            JSONObject employer = (JSONObject) tmp.get("employer");
+            vacancy.setOrganization(employer.get("name").toString());
             result.add(vacancy);
         }
         return result;
